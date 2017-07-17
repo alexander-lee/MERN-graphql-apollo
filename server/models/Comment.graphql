@@ -1,0 +1,6 @@
+type Comment {
+  id: ID!
+  comment: String
+  parent: Post
+  votes: Int
+}

@@ -1,0 +1,4 @@
+type Query {
+  posts: [Post]
+  author(id: ID!): User
+}
