@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
 // DATA HERE FOR NOW
-const authors = [
-  { id: '1', firstName: 'Tom', lastName: 'Coleman' },
-  { id: '2', firstName: 'Sashko', lastName: 'Stubailo' },
-  { id: '3', firstName: 'Mikhail', lastName: 'Novikov' },
+const users = [
+  { id: '1', username: 'liquidfired' },
+  { id: '2', username: 'frostedsolid' },
+  { id: '3', username: 'peniqliotuv' },
 ];
 
 const posts = [
@@ -17,8 +17,8 @@ const posts = [
 export default {
   Query: {
     posts: () => posts,
-    author: (obj, { id }) => {
-      return _.find(authors, { id: id })
+    user: (obj, { id }) => {
+      return _.find(users, { id: id })
     }
   },
   Mutation: {
@@ -39,6 +39,6 @@ export default {
     }
   },
   Post: {
-    author: (post) => _.find(authors, { id: post.userId })
+    author: (post) => _.find(users, { id: post.userId })
   }
 }

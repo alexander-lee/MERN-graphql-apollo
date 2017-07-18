@@ -34,7 +34,7 @@ gulp.task('assets-watch', ['sass', 'images'], function() {
 });
 
 gulp.task('server-copy', function() {
-  return gulp.src('server/**/*')
+  return gulp.src(['server/**/*', '!server/**/*.js'])
     .pipe(gulp.dest('dist'))
 });
 

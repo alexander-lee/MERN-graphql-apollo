@@ -29,7 +29,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|graphql|gql)$/,
         exclude: /node_modules/,
         loader: 'babel',
         // query: presets defined in .babelrc
