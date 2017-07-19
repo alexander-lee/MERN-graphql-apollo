@@ -73,7 +73,7 @@ gulp.task('run', ['server-build'], function() {
   const forbidden = ['client', 'node_modules', 'public', 'dist'];
   nodemon({
     script: './bin/www',
-    ext: 'js',
+    ext: 'js graphql gql',
     ignore: forbidden
   })
   .on('restart', ['server-build']);

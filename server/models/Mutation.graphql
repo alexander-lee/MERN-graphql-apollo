@@ -1,3 +1,3 @@
 type Mutation {
-  upvotePost(postId: ID!): Post
+  votePost(id: ID!, upvote: Boolean!): Post
 }

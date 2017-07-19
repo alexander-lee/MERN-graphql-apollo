@@ -22,14 +22,15 @@ export default {
     }
   },
   Mutation: {
-    upvotePost: ({ postId }) => {
-      const post = _.find(posts, { id: postId });
+    votePost: (obj, { id, upvote }) => {
+      const post = _.find(posts, { id });
 
       if(!post) {
         throw new Error(`Couldn't find post with id ${postId}`);
       }
 
-      posts.votes += 1;
+      post.votes += upvote ? 1 : -1;
+      console.log(post);
       return post;
     }
   },
