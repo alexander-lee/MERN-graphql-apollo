@@ -1,7 +1,8 @@
 #import "../../fragments/PostInfoFragment.graphql"
 
-query PostListQuery {
-  posts {
+query PostQuery($id: ID!){
+  post(id: $id) {
     ...PostInfo
+    # Add field for content
   }
 }

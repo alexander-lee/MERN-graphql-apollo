@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 
 import App from './scenes/App';
 import PostList from './scenes/PostList';
+import PostInformation from './scenes/PostInformation';
 
 import client from './client-config';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={PostList} />
+        <Route path="post/:id" component={PostInformation} />
       </Route>
     </Router>
   </ApolloProvider>,

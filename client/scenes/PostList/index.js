@@ -4,8 +4,8 @@ import { compose, graphql } from 'react-apollo';
 
 import Post from '../../components/Post';
 
-import postListQuery from './postListQuery.graphql';
-import votePostMutation from './votePostMutation.graphql';
+import PostListQuery from './PostListQuery.graphql';
+import VotePostMutation from './VotePostMutation.graphql';
 
 class PostList extends Component {
   static propTypes = {
@@ -20,7 +20,8 @@ class PostList extends Component {
         }),
         votes: PropTypes.number
       }))
-    })
+    }),
+    voteMutation: PropTypes.func
   }
 
   votePost = (id, upvote) => {
@@ -57,11 +58,11 @@ class PostList extends Component {
     const { posts, loading, error } = data;
 
     if(loading) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     if(error) {
-      return <div>{error.message}</div>
+      return <div>{error.message}</div>;
     }
 
     return (
@@ -82,6 +83,6 @@ class PostList extends Component {
 }
 
 export default compose(
-  graphql(postListQuery),
-  graphql(votePostMutation, { name: 'voteMutation' })
+  graphql(PostListQuery),
+  graphql(VotePostMutation, { name: 'voteMutation' })
 )(PostList);

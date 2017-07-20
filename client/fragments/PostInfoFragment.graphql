@@ -1,0 +1,8 @@
+fragment PostInfo on Post {
+  id
+  title
+  author {
+    username
+  }
+  votes
+}

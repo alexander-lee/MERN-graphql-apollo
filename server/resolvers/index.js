@@ -17,8 +17,11 @@ const posts = [
 export default {
   Query: {
     posts: () => posts,
+    post: (obj, { id }) => {
+      return _.find(posts, { id });
+    },
     user: (obj, { id }) => {
-      return _.find(users, { id: id })
+      return _.find(users, { id });
     }
   },
   Mutation: {
@@ -30,7 +33,6 @@ export default {
       }
 
       post.votes += upvote ? 1 : -1;
-      console.log(post);
       return post;
     }
   },
