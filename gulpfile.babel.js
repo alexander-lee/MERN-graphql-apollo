@@ -2,19 +2,20 @@ import gulp from 'gulp';
 import source from 'vinyl-source-stream';
 import notify from 'gulp-notify';
 import nodemon from 'gulp-nodemon';
-import webpack from 'gulp-webpack';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import imagemin from 'gulp-imagemin';
 import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
 
-import config from './webpack.config.js';
+import webpack from 'webpack'
+import webpackStream from 'webpack-stream';
+import config from './webpack.config';
 
 gulp.task('build', ['sass', 'images', 'server-run'], function() {
   return gulp.src('client/app.js')
     .pipe(notify('Starting Webpack Build'))
-    .pipe(webpack(config))
+    .pipe(webpackStream(config, webpack))
     .pipe(notify('Build Finished'))
     .pipe(gulp.dest('./public/js'));
 });
@@ -23,7 +24,10 @@ gulp.task('webpack-watch', function() {
   config.watch = true;
   return gulp.src('client/app.js')
     .pipe(notify('Watching Webpack Build'))
-    .pipe(webpack(config))
+    .pipe(webpackStream(config, webpack))
+    .on('error', () => {
+      this.emit('end')
+    })
     .pipe(notify('Build Finished'))
     .pipe(gulp.dest('./public/js'));
 });
@@ -73,7 +77,7 @@ gulp.task('run', ['server-build'], function() {
   const forbidden = ['client', 'node_modules', 'public', 'dist'];
   nodemon({
     script: './bin/www',
-    ext: 'js graphql gql',
+    ext: 'js',
     ignore: forbidden
   })
   .on('restart', ['server-build']);
