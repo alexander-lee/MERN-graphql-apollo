@@ -18,8 +18,7 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import",
-    "graphql"
+    "import"
   ],
   "rules": {
     "comma-dangle": ["error", "only-multiline"],
