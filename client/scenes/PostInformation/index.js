@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 import PostQuery from './PostQuery.graphql';
 
@@ -25,17 +25,17 @@ class PostInformation extends Component {
     const { data } = this.props;
     const { post, loading, error } = data;
 
-    if(loading) {
+    if (loading) {
       return <div>Loading...</div>;
     }
 
-    if(error) {
+    if (error) {
       return <div>{error.message}</div>;
     }
 
     return (
       <div>
-      {post.title}
+        {post.title}
       </div>
     );
   }

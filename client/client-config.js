@@ -9,7 +9,7 @@ const client = new ApolloClient({
       setTimeout(next, 500); // TODO: FOR LATENCY TESTING, REMOVE
     }
   }]),
-  dataIdFromObject: object => `${object.__typename}_${object.id}`,
+  dataIdFromObject: (object) => `${object.__typename}_${object.id}`,
   connectToDevTools: process.env.NODE_ENV !== 'production'
 });
 

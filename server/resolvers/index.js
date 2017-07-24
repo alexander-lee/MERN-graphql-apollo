@@ -28,8 +28,8 @@ export default {
     votePost: (obj, { id, upvote }) => {
       const post = _.find(posts, { id });
 
-      if(!post) {
-        throw new Error(`Couldn't find post with id ${postId}`);
+      if (!post) {
+        throw new Error(`Couldn't find post with id ${id}`);
       }
 
       post.votes += upvote ? 1 : -1;
@@ -38,10 +38,10 @@ export default {
   },
   User: {
     posts: (user) => {
-      return posts.filter((post) => post.userId === user.id)
+      return posts.filter((post) => post.userId === user.id);
     }
   },
   Post: {
     author: (post) => _.find(users, { id: post.userId })
   }
-}
+};

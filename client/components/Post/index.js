@@ -6,16 +6,16 @@ const propTypes = {
   author: PropTypes.string,
   votes: PropTypes.number,
   upvotePost: PropTypes.func,
-  downvotePost: PropTypes.func
-}
+  downvotePost: PropTypes.func,
+};
 
 function Post({ title, author, votes, upvotePost, downvotePost }) {
   return (
     <div>
       <h1>{title}</h1>
-      <label>{author}</label>
+      <span>{author}</span>
       <div>
-        <label>{votes}</label>
+        <span>{votes}</span>
         <button onClick={upvotePost}>+</button>
         <button onClick={downvotePost}>-</button>
       </div>

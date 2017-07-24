@@ -26,7 +26,7 @@ class PostList extends Component {
 
   votePost = (id, upvote) => {
     const { data, voteMutation } = this.props;
-    const post = data.posts.find(value => value.id === id);
+    const post = data.posts.find((value) => value.id === id);
 
     voteMutation({
       variables: { id, upvote },
@@ -38,17 +38,17 @@ class PostList extends Component {
       },
       update: (store, dataProxy) => {
         const updatedPost = dataProxy.data.votePost;
-        const data = store.readQuery({ query: postListQuery });
+        const storeData = store.readQuery({ query: PostListQuery });
 
-        data.posts = data.posts.map(post => {
-          if(post.id === updatedPost.id) {
-            return {...post, ...updatedPost};
+        storeData.posts = storeData.posts.map((storePost) => {
+          if (storePost.id === updatedPost.id) {
+            return { ...storePost, ...updatedPost };
           }
 
-          return post;
+          return storePost;
         });
 
-        store.writeQuery({ query: postListQuery, data })
+        store.writeQuery({ query: PostListQuery, storeData });
       }
     });
   }
@@ -57,17 +57,17 @@ class PostList extends Component {
     const { data } = this.props;
     const { posts, loading, error } = data;
 
-    if(loading) {
+    if (loading) {
       return <div>Loading...</div>;
     }
 
-    if(error) {
+    if (error) {
       return <div>{error.message}</div>;
     }
 
     return (
       <div>
-        {posts.map(post => (
+        {posts.map((post) => (
           <Post
             key={post.id}
             title={post.title}
