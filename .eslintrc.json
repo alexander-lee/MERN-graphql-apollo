@@ -22,15 +22,17 @@
   ],
   "rules": {
     "comma-dangle": ["error", "only-multiline"],
-    "func-names": "off",
+    "func-names": ["error", "as-needed"],
     "no-plusplus": "off",
     "no-underscore-dangle": ["error", { "allow": ["__typename"] }],
     "arrow-parens": ["error", "always"],
-    "arrow-body-style": "off",
+    "arrow-body-style": ["error", "as-needed"],
     "react/prop-types": ["error", { "ignore": ["children", "className"] }],
     "react/require-default-props": "off",
     "react/jsx-no-target-blank": "error",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
-    "import/no-unresolved": "off"
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*-test.js", "**/*.spec.js"]}]
   }
 }

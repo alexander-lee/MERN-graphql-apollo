@@ -1,9 +1,10 @@
 {
-  "name": "graphql-practice",
+  "name": "MERN-graphql-apollo",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "mocha --require babel-register --reporter nyan \"./!(node_modules)/**/{*-test,*.spec}.js\""
   },
   "dependencies": {
     "babel-core": "^6.10.4",
@@ -38,7 +39,6 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-apollo": "^1.4.3",
-    "react-dom": "^15.6.1",
     "react-router": "^3.0.0",
     "sass-loader": "^6.0.6",
     "serve-favicon": "~2.3.0",
@@ -48,6 +48,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-register": "^6.24.1",
+    "chai": "^4.1.0",
+    "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
     "eslint-plugin-import": "^2.7.0",
@@ -63,6 +66,9 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.6.0",
+    "mocha": "^3.4.2",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }

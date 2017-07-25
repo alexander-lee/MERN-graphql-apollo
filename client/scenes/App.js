@@ -1,10 +1,10 @@
 import React from 'react';
 
-function App() {
+function App({ children }) {
   return (
     <div>
       <h1>Reddit</h1>
-      {this.props.children}
+      {children}
     </div>
   );
 }

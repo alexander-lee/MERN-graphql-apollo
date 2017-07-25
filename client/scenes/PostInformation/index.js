@@ -1,45 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
+import LoadingWrapper from '../../components/LoadingWrapper';
 import PostQuery from './PostQuery.graphql';
 
-class PostInformation extends Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool,
-      error: PropTypes.object,
-      posts: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
-        title: PropTypes.string,
-        author: PropTypes.shape({
-          username: PropTypes.string
-        }),
-        votes: PropTypes.number
-      }))
-    }),
-    voteMutation: PropTypes.func
-  }
+const propTypes = {
+  data: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.object,
+    posts: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      author: PropTypes.shape({
+        username: PropTypes.string
+      }),
+      votes: PropTypes.number
+    }))
+  })
+};
 
-  render() {
-    const { data } = this.props;
-    const { post, loading, error } = data;
+function PostInformation({ data }) {
+  const { post = {}, loading, error } = data;
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    if (error) {
-      return <div>{error.message}</div>;
-    }
-
-    return (
+  return (
+    <LoadingWrapper
+      loading={loading}
+      error={error}
+    >
       <div>
         {post.title}
       </div>
-    );
-  }
+    </LoadingWrapper>
+  );
 }
+
+PostInformation.propTypes = propTypes;
 
 export default graphql(PostQuery, {
   options: (props) => ({

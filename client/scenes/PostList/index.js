@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 
 import Post from '../../components/Post';
+import LoadingWrapper from '../../components/LoadingWrapper';
 
 import PostListQuery from './PostListQuery.graphql';
 import VotePostMutation from './VotePostMutation.graphql';
@@ -48,36 +49,33 @@ class PostList extends Component {
           return storePost;
         });
 
-        store.writeQuery({ query: PostListQuery, storeData });
+        store.writeQuery({ query: PostListQuery, data: storeData });
       }
     });
   }
 
   render() {
     const { data } = this.props;
-    const { posts, loading, error } = data;
-
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    if (error) {
-      return <div>{error.message}</div>;
-    }
+    const { posts = [], loading, error } = data;
 
     return (
-      <div>
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            title={post.title}
-            author={post.author.username}
-            votes={post.votes}
-            upvotePost={() => this.votePost(post.id, true)}
-            downvotePost={() => this.votePost(post.id, false)}
-          />
-        ))}
-      </div>
+      <LoadingWrapper
+        loading={loading}
+        error={error}
+      >
+        <div>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              title={post.title}
+              author={post.author.username}
+              votes={post.votes}
+              upvotePost={() => this.votePost(post.id, true)}
+              downvotePost={() => this.votePost(post.id, false)}
+            />
+          ))}
+        </div>
+      </LoadingWrapper>
     );
   }
 }

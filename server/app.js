@@ -1,14 +1,11 @@
 import express from 'express';
 import path from 'path';
-import favicon from 'serve-favicon';
+// import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
-
 import schema from './schema';
-
-import routes from './routes/index';
 
 const app = express();
 
