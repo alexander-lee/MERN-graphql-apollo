@@ -1,22 +1,25 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow } from 'enzyme';
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
 
 import LoadingWrapper from '../';
+
+chai.use(chaiEnzyme());
 
 describe('<LoadingWrapper />', () => {
   context('when the loading prop is true', () => {
     it('renders <div>Loading...</div> if no loader is specified', () => {
       const noLoader = shallow(<LoadingWrapper loading />);
 
-      expect(noLoader.contains(<div>Loading...</div>)).to.equal(true);
+      expect(noLoader).to.containMatchingElement(<div>Loading...</div>);
     });
 
     it('renders a custom loader if a loader is specified', () => {
       const loader = <div>Custom Loader</div>;
       const withLoader = shallow(<LoadingWrapper loading loader={loader} />);
 
-      expect(withLoader.contains(loader)).to.equal(true);
+      expect(withLoader).to.contain(loader);
     });
   });
 
@@ -25,7 +28,7 @@ describe('<LoadingWrapper />', () => {
       const error = { message: 'Some Error' };
       const withError = shallow(<LoadingWrapper error={error} />);
 
-      expect(withError.contains(<div>{error.message}</div>)).to.equal(true);
+      expect(withError).to.containMatchingElement(<div>{error.message}</div>);
     });
   });
 
@@ -36,6 +39,6 @@ describe('<LoadingWrapper />', () => {
       </LoadingWrapper>
     );
 
-    expect(loadingWrapper.contains(<div>Some data</div>)).to.equal(true);
+    expect(loadingWrapper).to.contain(<div>Some data</div>);
   });
 });
