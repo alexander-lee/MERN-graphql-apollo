@@ -31,6 +31,7 @@ export class PostList extends Component {
 
     voteMutation({
       variables: { id, upvote },
+      /*
       optimisticResponse: {
         votePost: {
           ...post,
@@ -51,6 +52,7 @@ export class PostList extends Component {
 
         store.writeQuery({ query: PostListQuery, data: storeData });
       },
+      */
     });
   }
 
