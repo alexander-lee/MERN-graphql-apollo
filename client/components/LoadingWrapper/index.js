@@ -6,8 +6,8 @@ const propTypes = {
   loading: PropTypes.bool,
   loader: PropTypes.node,
   error: PropTypes.shape({
-    message: PropTypes.string
-  })
+    message: PropTypes.string,
+  }),
 };
 
 function LoadingWrapper({ children, loading, loader, error }) {

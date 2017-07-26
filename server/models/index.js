@@ -10,5 +10,5 @@ export default [
   Post,
   Comment,
   Query,
-  Mutation
+  Mutation,
 ];

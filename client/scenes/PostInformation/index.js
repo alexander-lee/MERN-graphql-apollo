@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 
-import LoadingWrapper from '../../components/LoadingWrapper';
+import LoadingWrapper from 'components/LoadingWrapper';
 import PostQuery from './PostQuery.graphql';
 
 const propTypes = {
@@ -13,11 +13,11 @@ const propTypes = {
       id: PropTypes.string,
       title: PropTypes.string,
       author: PropTypes.shape({
-        username: PropTypes.string
+        username: PropTypes.string,
       }),
-      votes: PropTypes.number
-    }))
-  })
+      votes: PropTypes.number,
+    })),
+  }),
 };
 
 function PostInformation({ data }) {
@@ -39,6 +39,6 @@ PostInformation.propTypes = propTypes;
 
 export default graphql(PostQuery, {
   options: (props) => ({
-    variables: { id: props.params.id }
-  })
+    variables: { id: props.params.id },
+  }),
 })(PostInformation);

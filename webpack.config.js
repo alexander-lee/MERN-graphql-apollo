@@ -8,6 +8,9 @@ const productionPlugins = [
 ];
 
 module.exports = {
+  resolve: {
+    root: path.join(__dirname, 'client')
+  },
   entry: [
     path.join(__dirname, 'client', 'app.js')
   ],

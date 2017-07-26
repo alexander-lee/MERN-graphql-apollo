@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 
-import Post from '../../components/Post';
-import LoadingWrapper from '../../components/LoadingWrapper';
+import Post from 'components/Post';
+import LoadingWrapper from 'components/LoadingWrapper';
 
 import PostListQuery from './PostListQuery.graphql';
 import VotePostMutation from './VotePostMutation.graphql';
 
-class PostList extends Component {
+export class PostList extends Component {
   static propTypes = {
     data: PropTypes.shape({
       loading: PropTypes.bool,
@@ -17,12 +17,12 @@ class PostList extends Component {
         id: PropTypes.string,
         title: PropTypes.string,
         author: PropTypes.shape({
-          username: PropTypes.string
+          username: PropTypes.string,
         }),
-        votes: PropTypes.number
-      }))
+        votes: PropTypes.number,
+      })),
     }),
-    voteMutation: PropTypes.func
+    voteMutation: PropTypes.func,
   }
 
   votePost = (id, upvote) => {
@@ -34,8 +34,8 @@ class PostList extends Component {
       optimisticResponse: {
         votePost: {
           ...post,
-          votes: post.votes + (upvote ? 1 : -1)
-        }
+          votes: post.votes + (upvote ? 1 : -1),
+        },
       },
       update: (store, dataProxy) => {
         const updatedPost = dataProxy.data.votePost;
@@ -50,7 +50,7 @@ class PostList extends Component {
         });
 
         store.writeQuery({ query: PostListQuery, data: storeData });
-      }
+      },
     });
   }
 

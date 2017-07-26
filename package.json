@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "gulp",
-    "test": "mocha --require babel-register --reporter nyan \"./!(node_modules)/**/{*-test,*.spec}.js\""
+    "test": "cross-env NODE_PATH=./client mocha --require babel-register --reporter nyan \"./!(node_modules)/**/{*-test,*.spec}.js\""
   },
   "dependencies": {
     "babel-core": "^6.10.4",
@@ -52,6 +52,7 @@
     "chai": "^4.1.0",
     "chai-as-promised": "^7.1.1",
     "chai-enzyme": "^0.8.0",
+    "cross-env": "^5.0.1",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",

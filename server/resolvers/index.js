@@ -17,12 +17,12 @@ const posts = [
 export default {
   Query: {
     posts: () => posts,
-    post: (obj, { id }) => {
-      return _.find(posts, { id });
-    },
-    user: (obj, { id }) => {
-      return _.find(users, { id });
-    }
+    post: (obj, { id }) => (
+      _.find(posts, { id })
+    ),
+    user: (obj, { id }) => (
+      _.find(users, { id })
+    ),
   },
   Mutation: {
     votePost: (obj, { id, upvote }) => {
@@ -34,14 +34,14 @@ export default {
 
       post.votes += upvote ? 1 : -1;
       return post;
-    }
+    },
   },
   User: {
-    posts: (user) => {
-      return posts.filter((post) => post.userId === user.id);
-    }
+    posts: (user) => (
+      posts.filter((post) => post.userId === user.id)
+    ),
   },
   Post: {
-    author: (post) => _.find(users, { id: post.userId })
-  }
+    author: (post) => _.find(users, { id: post.userId }),
+  },
 };

@@ -21,7 +21,7 @@
     "import"
   ],
   "rules": {
-    "comma-dangle": ["error", "only-multiline"],
+    "comma-dangle": ["error", "always-multiline"],
     "func-names": ["error", "as-needed"],
     "no-plusplus": "off",
     "no-underscore-dangle": ["error", { "allow": ["__typename"] }],
@@ -33,6 +33,9 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
     "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*-test.js", "**/*.spec.js"]}]
+    "import/extensions": ["error", "never", { "graphql": "always" }],
+    "import/no-absolute-path": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default": "off"
   }
 }
