@@ -8,9 +8,6 @@ const productionPlugins = [
 ];
 
 module.exports = {
-  resolve: {
-    root: path.join(__dirname, 'client')
-  },
   entry: [
     path.join(__dirname, 'client', 'app.js')
   ],
@@ -18,6 +15,9 @@ module.exports = {
     path: path.join(__dirname, 'public', 'js'),
     filename: 'bundle.js',
     publicPath: '/js/'
+  },
+  resolve: {
+    modules: ['client', 'node_modules']
   },
   cache: false,
   devtool: debug ? 'source-map' : null,
