@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './styles.scss';
 
 const propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
   votes: PropTypes.number,
@@ -9,17 +11,19 @@ const propTypes = {
   downvotePost: PropTypes.func,
 };
 
-function Post({ title, author, votes, upvotePost, downvotePost }) {
+function Post({ id, title, author, votes, upvotePost, downvotePost }) {
   return (
-    <div>
-      <h1>{title}</h1>
-      <span>{author}</span>
-      <div>
-        <span>{votes}</span>
-        <button onClick={upvotePost}>+</button>
-        <button onClick={downvotePost}>-</button>
+    <a href={`post/${id}`} className={s.post}>
+      <div className={s.voteContainer}>
+        <button className={s.upvote} onClick={upvotePost}>⬆</button>
+        <div>{votes}</div>
+        <button className={s.downvote} onClick={downvotePost}>⬇</button>
       </div>
-    </div>
+      <div className={s.informationContainer}>
+        <h1>{title}</h1>
+        <span>by {author}</span>
+      </div>
+    </a>
   );
 }
 

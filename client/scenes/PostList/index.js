@@ -26,8 +26,8 @@ export class PostList extends Component {
   }
 
   votePost = (id, upvote) => {
-    const { data, voteMutation } = this.props;
-    const post = data.posts.find((value) => value.id === id);
+    const { voteMutation } = this.props;
+    // const post = data.posts.find((value) => value.id === id);
 
     voteMutation({
       variables: { id, upvote },
@@ -66,9 +66,11 @@ export class PostList extends Component {
         error={error}
       >
         <div>
+          <h1>Posts</h1>
           {posts.map((post) => (
             <Post
               key={post.id}
+              id={post.id}
               title={post.title}
               author={post.author.username}
               votes={post.votes}

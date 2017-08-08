@@ -21,7 +21,7 @@ const propTypes = {
 };
 
 function PostInformation({ data }) {
-  const { post = {}, loading, error } = data;
+  const { post = { author: {} }, loading, error } = data;
 
   return (
     <LoadingWrapper
@@ -29,7 +29,8 @@ function PostInformation({ data }) {
       error={error}
     >
       <div>
-        {post.title}
+        <h1>{post.title}</h1>
+        <div>{post.author.username}</div>
       </div>
     </LoadingWrapper>
   );
