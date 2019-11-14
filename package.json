@@ -33,7 +33,7 @@
     "graphql-server-express": "^1.0.0",
     "graphql-tools": "^1.1.0",
     "json-loader": "^0.5.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "morgan": "~1.6.1",
     "node-sass": "^3.13.1",
     "prop-types": "^15.5.10",
